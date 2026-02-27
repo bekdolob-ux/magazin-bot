@@ -3,11 +3,11 @@ import sys
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-TOKEN = os.getenv("TOKEN")
+TOKEN = os.environ.get("TOKEN")
 
-# 🔒 TOKEN текшерүү
+# TOKEN текшерүү
 if not TOKEN:
-    print("❌ TOKEN табылган жок! Render Environment Variables текшер.")
+    print("❌ TOKEN табылган жок!")
     sys.exit(1)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
