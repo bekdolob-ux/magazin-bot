@@ -1,20 +1,21 @@
 import os
+import sys
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-TOKEN = os.environ.get("TOKEN")
+TOKEN = os.getenv("TOKEN")
+
+# 🔒 TOKEN текшерүү
+if not TOKEN:
+    print("❌ TOKEN табылган жок! Render Environment Variables текшер.")
+    sys.exit(1)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("🤖 Бот иштеп жатат!")
 
 def main():
-    if not TOKEN:
-        print("❌ TOKEN табылган жок!")
-        return
-
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
-
     print("🚀 Bot started...")
     app.run_polling()
 
