@@ -3,7 +3,7 @@ import sys
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-TOKEN = os.environ.get("TOKEN")
+TOKEN = os.environ.get("8927149628:AAFocJ9JanGi52rxLCHCz_l7l-q4ftespUo")
 
 # TOKEN текшерүү
 if not TOKEN:
